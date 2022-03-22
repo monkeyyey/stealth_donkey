@@ -1,9 +1,9 @@
 # stealth_donkey
-Stealth Donkey is a work-in-progress Proof-of-Concept(POC) project, a framework which can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
+Stealth Donkey is a work-in-progress Proof-of-Concept (POC) project, a framework that can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
 
-The framework should be able to be customizable for various OS and/or type of information to be collected. 
+The framework is customisable for various operating systems and/or types of information to be collected.
 
-With the framework in place, a system administrator can apply it to monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level. 
+With the framework in place, a system administrator can monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level.
 
 References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
@@ -22,6 +22,44 @@ pip install -r requirements.txt
 ```
 No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ### 2. Setting up Client Machine
+#### i. Installing sshpass 
+sshpass is used to include password scp request, to prevent prompt for password.
+```
+# For safe measure, update + upgrade
+yum update
+yum upgrade
+
+# Need epel-release to install sshpass
+yum install epel-release
+yum install sshpass 
+```
+#### ii. Adding Agent as systemd service
+This ensures that Agent is able to run in background, upon startup. <br />
+Change the <names> and <filepaths> to what is appropriate for you. 
+```
+# create .service file
+cd /etc/systemd/system
+touch <service_name>.service
+```
+Open the .service file in a file editor and enter this
+```
+[Unit]
+Description=Stealth agent that monitor ur fat ass
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=python3 <Full_file_path_Directory_Only>/server.py
+WorkingDirectory= <Full_file_path_Directory_Only>
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+```
 
 ### 3. Setting up SSH server
 
