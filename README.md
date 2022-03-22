@@ -59,13 +59,14 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=%n
 ```
-Now we just need to reload the system daemon + start the service
+Reload the system daemon + start the service + configure it to start upon bootup:
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable <service_name>.service
 sudo systemctl start <service_name>.service
 ```
-`systemctl enable` ensures that service always starts upon bootup! 
+`systemctl enable` ensures that service always starts upon bootup.<br />
+`After=network.target` ensures that service starts only when there is internet connection, may need to change this when configuring 'static Agents' later on.
 
 
 ### 3. Setting up SSH server
