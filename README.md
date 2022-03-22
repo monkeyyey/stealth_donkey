@@ -1,1 +1,0 @@
-"# stealth_donkey" 
