@@ -1,4 +1,11 @@
 # stealth_donkey
+Stealth Donkey is a work-in-progress Proof-of-Concept(POC) project, a framework which can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
+
+With the framework in place, a system administrator can apply it to monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level. 
+
+References:
+1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
+2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
 ## Things to learn
 1. Using Flask (Python version of Express node.js)
