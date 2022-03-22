@@ -101,7 +101,9 @@ SSH runs on port `22`, so just check ah brother.
 Folders to create in `/Agent` Directory before testing: `/databack`, `/retrieval`, `/send_ssh`
 ### 2. Both the Agent and Admin are 'servers' and 'clients'
 As they exchange information with each other, they both require endpoints. Difference is that `Admin Server` has Web interface.
-### 3. Ur mum is gae
+### 3. Operating System Compatibility
+At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine, and maybe to impress KK.
+### 4. Ur mum is gae
 Yup.
 
 ## Things to learn before starting
@@ -124,18 +126,12 @@ exec("<Command>")
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
 ## Agent Server Endpoints summary
-1 and 2 are experimental endpoints used to send a file/zipfile to `Admin server`. <br />
+1 and 2 are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br />
 3 and 4 are endpoints used to download a file/zipfile from `Admin server`. <br />
-5 is and endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br />
+5 is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br />
+6 is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.
+7 is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file.
 
-  
-## Agent Server Endpoints 
- 
-### 1. Hard coded endpoint that sends back file
-Upon receiving get request, it sends back a downloadable file by referring to a hard coded variable.
- 
-### 2. Hard coded endpoint that sends back zip file
-Upon receiving get request, it zips a folder and sends back a downloadable zip file by referring to hard coded variables.
   
 ## To be Fixed/Tested/Solved
 
@@ -149,6 +145,9 @@ I have managed to use workarounds for these problems like `sshpass` and adding `
 
 ### 3. How to download files directly to folder (Applicable to Admin Endpoints in home.html)
 Right now, files that are received by the `Admin` from the `Agent` is downloadable files, but this requires user action to choose where the folder is downloaded. Automating this is more practical from Admin perspective.
+
+### 4. Login.html
+The CSS and other stuff haven't link properly.
 
 
 
