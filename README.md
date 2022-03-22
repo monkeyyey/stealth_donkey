@@ -18,9 +18,9 @@ References:
 <br /> <br />
 ## Diagram of Current architecture
 ### 1. With Online Agent
-!(https://github.com/monkeyyey/stealth_donkey/edit/main/git_images/agent.png?raw=true)
+![alt text](https://github.com/monkeyyey/stealth_donkey/edit/main/git_images/agent.png?raw=true)
 ### 2. With Local Agent
-!(https://github.com/monkeyyey/stealth_donkey/edit/main/git_images/local_agent.png?raw=true)
+![alt text](https://github.com/monkeyyey/stealth_donkey/edit/main/git_images/local_agent.png?raw=true)
 
 
 <br /><br />
