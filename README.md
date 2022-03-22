@@ -14,18 +14,22 @@ Agent:
 Admin Server:
 Client/Client Machine:
 
-## Prerequisites
+## Technical Prerequisites
 ### 1. Install Agent dependencies <br />
 The requirements file is in the Agent Branch, remember to cd to the Agent directory!<br />
 No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ```
 pip install -r requirements.txt
 ```
+### 2. Setting up Client Machine
 
-## Things to learn
-### 1. Using Flask (Python version of Express node.js) <br />
-Our current Agent Server is created using Flask. <br />
-### 2. Executing OS commands in using code <br />
+### 3. Setting up SSH server
+
+## Things to learn before starting
+### 1. Using Flask (Python version of Express node.js)
+Our current Agent Server is created using Flask.
+### 2. Executing OS commands using code
+Most of the functionalities are made possible by using OS commands <br />
 Python:
 ```
 os.system("<Command>")
@@ -34,7 +38,7 @@ Javascript:
 ```
 exec("<Command>")
 ```
-3. Using the Agent to monitor system information to detect malware and intrusion detection
+### 3. Using the Agent to monitor system information to detect malware and intrusion detection
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
 ## Agent Server Endpoints summary
@@ -48,7 +52,15 @@ Upon receiving get request, it sends back a downloadable file by referring to a 
 ### 2. Hard coded endpoint that sends back zip file
 Upon receiving get request, it zips a folder and sends back a downloadable zip file by referring to hard coded variables.
   
-## To be Fixed/Tested
-### 1. Operating system compatibility (For endpoints 5,6,7,8)
-Right now, there is a problem regarding how to traverse directories in Windows. For example, entering location to output a file in linux may look something like this: "./animal/money.txt". In windows, some commands require the input to look like this "animal\money.txt". From my experience, this is very inconsistent across different commands. <br />
+## To be Fixed/Tested/Solved
+### 1. Operating system compatibility (Applicable for Agent endpoints 5,6,7,8)
+There is a problem regarding how to traverse directories in Windows. For example, entering location to output a file in linux may look something like this: "./animal/money.txt". In windows, some commands require the input to look like this "animal\money.txt". From my experience, this is very inconsistent across different commands. <br />
 In summary, just fix this problem by testing and tweaking the code.
+### 2. How to automate answering of OS command replies (Applicable to Agent Endpoints)
+Right now, I can only execute OS commands, but I am unable to answer anything AFTER the command is executed. For Example, I am unable to execute commands like SSH logins, where I need to enter a password after I enter the SSH commands.<br />
+I have managed to use workarounds for these problems like SSHPASS and adding --insecure to curl commands. But some workarounds may require the Client machine to install certain services, which is not practical from the client perspective as our agent is supposed to be 'Stealthy'
+### 3. How to download files directly to folder (Applicable to Admin Endpoints in home.html)
+Right now, files that are received by the Admin from the Agent is downloadable files, but this requires user action to choose where the folder is downloaded. Automating this is more practical from Admin perspective.
+
+
+
