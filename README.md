@@ -10,9 +10,10 @@ References:
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
 ## Definitions
-Agent:
-Admin Server:
-Client/Client Machine:
+Agent: Script running on Client Machine <br />
+Client/Client Machine: Machine which the Agent is monitoring <br />
+Admin Server: Administrative server that communicates with Agent, has a web interface
+
 
 ## Technical Prerequisites
 ### 1. Install Agent dependencies <br />
