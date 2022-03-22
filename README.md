@@ -18,6 +18,7 @@ References:
 <br /><br /><br />
 ## Technical Prerequisites
 
+<br />
 ### 1. Install Agent dependencies <br />
 The requirements file is in the Agent Branch, remember to `cd` to the `Agent` directory!
 ```
@@ -25,8 +26,10 @@ pip install -r requirements.txt
 ```
 No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
 
+<br />
 ### 2. Setting up Client Machine
 
+<br />
 #### i. Installing sshpass 
 `sshpass` is used to include password in `scp` request, to prevent prompt for password.
 ```
@@ -39,6 +42,7 @@ yum install epel-release
 yum install sshpass 
 ```
 
+<br />
 #### ii. Adding Agent as systemd service
 This ensures that `Agent` is able to run in background, upon startup. Change the `<names>` and `<filepaths>` to what is appropriate for you. <br /> <br />
 Create `.service` file:
@@ -74,6 +78,7 @@ sudo systemctl start <service_name>.service
 `After=network.target` in service file ensures that service starts only when there is internet connection, may need to change this when configuring 'static Agents' later on. <br />
 `systemctl enable` ensures that service always starts upon bootup.
 
+<br />
 ### 3. Setting up SSH server
 SSH server for storage of files that Admin wants to save, for endpoint 7. The SSH server will be set-up on a Kali Linux machine.
 <br />
@@ -99,21 +104,27 @@ SSH runs on port `22`, so just check ah brother.
 
 <br /><br /><br />
 ## Good-to-Know 
+<br />
 ### 1. The Folders required in Agent Branch are not there
 Folders to create in `/Agent` Directory before testing: `/databack`, `/retrieval`, `/send_ssh`
+<br />
 ### 2. Both the Agent and Admin are 'servers' and 'clients'
 As they exchange information with each other, they both require endpoints. Difference is that `Admin Server` has Web interface.
+<br />
 ### 3. Operating System Compatibility
 At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine, and maybe to impress KK.
+<br />
 ### 4. Ur mum is gae
 Yup.
 
 <br /><br /><br />
 ## Things to learn before starting
- 
+
+<br />
 ### 1. Using Flask (Python version of Express node.js)
 Our current Agent Server is created using Flask.
-  
+
+<br />
 ### 2. Executing OS commands using code
 Most of the functionalities are made possible by using OS commands <br /> <br />
 Python:
@@ -124,7 +135,8 @@ Javascript:
 ```
 exec("<Command>")
 ```
-  
+
+<br />
 ### 3. Using the Agent to monitor system information to detect malware and intrusion detection
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
@@ -140,17 +152,22 @@ Currently have zero knowledge on this. This component is the most important, as 
 <br /><br /><br />
 ## To be Fixed/Tested/Solved
 
+<br />
 ### 1. Operating system compatibility (Applicable for Agent endpoints 5,6,7,8)
 There is a problem regarding how to traverse directories in Windows. For example, entering location to output a file in linux may look something like this: `"./animal/money.txt"`. In windows, some commands require the input to look like this `"animal\money.txt"`. From my experience, this is very inconsistent across different commands. <br />
 In summary, just fix this problem by testing and tweaking the code's OS commands.
 
+<br />
 ### 2. How to automate answering of OS command replies (Applicable to Agent Endpoints)
 Right now, I can only execute OS commands, but I am unable to answer anything AFTER the command is executed. For Example, I am unable to execute commands like SSH logins, where I need to enter a password after I enter the SSH commands.<br />
 I have managed to use workarounds for these problems like `sshpass` and adding `--insecure` to curl commands. But some workarounds may require the Client machine to install certain services, which is not practical from the client perspective as our agent is supposed to be 'Stealthy'.
 
+<br />
 ### 3. How to download files directly to folder (Applicable to Admin Endpoints in home.html)
 Right now, files that are received by the `Admin` from the `Agent` is downloadable files, but this requires user action to choose where the folder is downloaded. Automating this is more practical from Admin perspective.
 
+
+<br />
 ### 4. Login.html
 The CSS and other stuff haven't link properly.
 
