@@ -9,11 +9,11 @@ References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
+<br /><br /><br /><br /><br />
 ## Definitions
 `Agent`: Script running on Client Machine <br />
 `Client`/`Client Machine`: Machine which the Agent is monitoring <br />
 `Admin Server`: Administrative server that communicates with Agent, has a web interface
-
 
 ## Technical Prerequisites
 
