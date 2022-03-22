@@ -18,16 +18,16 @@ References:
 ## Technical Prerequisites
 
 ### 1. Install Agent dependencies <br />
-The requirements file is in the Agent Branch, remember to cd to the Agent directory!
+The requirements file is in the Agent Branch, remember to `cd` to the `Agent` directory!
 ```
 pip install -r requirements.txt
 ```
-No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
+No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
 
 ### 2. Setting up Client Machine
 
 #### i. Installing sshpass 
-sshpass is used to include password scp request, to prevent prompt for password.
+`sshpass` is used to include password in `scp` request, to prevent prompt for password.
 ```
 # For safe measure, update + upgrade
 yum update
@@ -39,13 +39,13 @@ yum install sshpass
 ```
 
 #### ii. Adding Agent as systemd service
-This ensures that Agent is able to run in background, upon startup. Change the <names> and <filepaths> to what is appropriate for you. <br /> <br />
-Create service file:
+This ensures that `Agent` is able to run in background, upon startup. Change the `<names>` and `<filepaths>` to what is appropriate for you. <br /> <br />
+Create `.service` file:
 ```
 cd /etc/systemd/system
 touch <service_name>.service
 ```
-Open the .service file in a file editor and enter this:
+Open the `.service` file in a file editor and enter this:
 ```
 [Unit]
 Description=Stealth agent that monitor ur fat ass
@@ -83,7 +83,7 @@ sudo apt-get install openssh-server
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
-Ensure ssh server is running, `netstat -tupln`:
+Ensure SSH server is running, `netstat -tupln`:
 ```
 (Not all processes could be identified, non-owned process info
  will not be shown, you would have to be root to see it all.)
@@ -96,14 +96,11 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 ```
 SSH runs on port `22`, so just check ah brother.
 
-
-
-
 ## Good-to-Know 
 ### 1. The Folders required in Agent Branch are not there
-Folders to create in /Agent Directory before testing: /databack, /retrieval, /send_ssh
+Folders to create in `/Agent` Directory before testing: `/databack`, `/retrieval`, `/send_ssh`
 ### 2. Both the Agent and Admin are 'servers' and 'clients'
-As they exchange information with each other, they both require endpoints. Difference is that Admin server has Web interface.
+As they exchange information with each other, they both require endpoints. Difference is that `Admin Server` has Web interface.
 ### 3. Ur mum is gae
 Yup.
 
