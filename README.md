@@ -34,9 +34,9 @@ yum install epel-release
 yum install sshpass 
 ```
 #### ii. Adding Agent as systemd service
-This ensures that Agent is able to run in background, upon startup. Change the <names> and <filepaths> to what is appropriate for you. 
+This ensures that Agent is able to run in background, upon startup. Change the <names> and <filepaths> to what is appropriate for you. <br />
+Create service file:
 ```
-# create .service file
 cd /etc/systemd/system
 touch <service_name>.service
 ```
