@@ -15,6 +15,9 @@ References:
 `Client`/`Client Machine`: Machine which the Agent is monitoring <br />
 `Admin Server`: Administrative server that communicates with Agent, has a web interface
 
+<br /> <br />
+## Diagram of Current architecture
+
 <br /><br />
 ## Technical Prerequisites
 
@@ -162,9 +165,11 @@ I have managed to use workarounds for these problems like `sshpass` and adding `
 ### 3. How to download files directly to folder (Applicable to Admin Endpoints in home.html)
 Right now, files that are received by the `Admin` from the `Agent` is downloadable files, but this requires user action to choose where the folder is downloaded. Automating this is more practical from Admin perspective.
 
-
 ### 4. Login.html
 The CSS and other stuff haven't link properly.
+
+### 5. Reading Local Instructions
+Right now the Agent is getting intructions through the Admin Server. Our aim is to make the Agent read the instructions from a local file.
 
 
 
