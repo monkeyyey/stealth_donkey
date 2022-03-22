@@ -23,10 +23,10 @@ pip install -r requirements.txt
 ```
 
 ## Things to learn
-1. Using Flask (Python version of Express node.js)
-Our current Agent Server is created using Flask.
-2. Executing OS commands in using code
-Since most of the commands will be 'customizable', string interpolation will be used quite often.
+1. Using Flask (Python version of Express node.js) <br />
+Our current Agent Server is created using Flask. <br />
+2. Executing OS commands in using code <br />
+Since most of the commands will be 'customizable', string interpolation will be used quite often. <br />
 Python:
 ```
 os.system("<Command>")
