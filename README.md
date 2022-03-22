@@ -7,6 +7,12 @@ References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
+## Prerequisites
+1. Install Agent dependencies
+```
+pip install -r requirements.txt
+```
+
 ## Things to learn
 1. Using Flask (Python version of Express node.js)
 Our current Agent Server is created using Flask.
@@ -16,8 +22,8 @@ Javascript: exec("<Command>")
 Since most of the commands will be 'customizable', string interpolation will be used quite often.
 
 ## Agent Server Endpoints Summary
-1 and 2 are experimental endpoints that sends back a downloadable file/zipfile <br />
-3 and 4 are endpoints that receives a request, then
+1 and 2 are experimental endpoints that sends back a downloadable file/zipfile. <br />
+3 and 4 are endpoints that receives an external request, then itself makes a request to the 
 ## Agent Server Endpoints 
 1. Hard coded endpoint that sends back file
 Upon receiving get request, it sends back a downloadable file by referring to a hard coded variable.
