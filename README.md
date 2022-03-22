@@ -9,13 +9,13 @@ References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
-<br /><br /><br />
+<br /><br />
 ## Definitions
 `Agent`: Script running on Client Machine <br />
 `Client`/`Client Machine`: Machine which the Agent is monitoring <br />
 `Admin Server`: Administrative server that communicates with Agent, has a web interface
 
-<br /><br /><br />
+<br /><br />
 ## Technical Prerequisites
 
 
@@ -25,10 +25,9 @@ The requirements file is in the Agent Branch, remember to `cd` to the `Agent` di
 pip install -r requirements.txt
 ```
 No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
-<br />
+<br /><br />
 
 ### 2. Setting up Client Machine
-<br />
 
 #### i. Installing sshpass 
 `sshpass` is used to include password in `scp` request, to prevent prompt for password.
@@ -41,7 +40,6 @@ yum upgrade
 yum install epel-release
 yum install sshpass 
 ```
-<br />
 
 #### ii. Adding Agent as systemd service
 This ensures that `Agent` is able to run in background, upon startup. Change the `<names>` and `<filepaths>` to what is appropriate for you. <br /> <br />
@@ -77,7 +75,7 @@ sudo systemctl start <service_name>.service
 ```
 `After=network.target` in service file ensures that service starts only when there is internet connection, may need to change this when configuring 'static Agents' later on. <br />
 `systemctl enable` ensures that service always starts upon bootup.
-
+<br /><br />
 
 ### 3. Setting up SSH server
 SSH server for storage of files that Admin wants to save, for endpoint 7. The SSH server will be set-up on a Kali Linux machine.
@@ -103,7 +101,7 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 SSH runs on port `22`, so just check ah brother.
 
 
-<br /><br /><br />
+<br /><br />
 ## Good-to-Know 
 
 ### 1. The Folders required in Agent Branch are not there
@@ -119,7 +117,7 @@ At the current stage, the OS compatibility of Agent is only so that you can easi
 Yup.
 
 
-<br /><br /><br />
+<br /><br />
 ## Things to learn before starting
 
 ### 1. Using Flask (Python version of Express node.js)
@@ -140,16 +138,16 @@ exec("<Command>")
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
 
-<br /><br /><br />
+<br /><br />
 ## Agent Server Endpoints summary
-1 and 2 are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br />
-3 and 4 are endpoints used to download a file/zipfile from `Admin server`. <br />
-5 is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br />
-6 is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.
-7 is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file.
+`1` and `2` are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br /><br />
+`3` and `4` are endpoints used to download a file/zipfile from `Admin server`. <br /><br />
+`5` is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br /><br />
+`6` is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.<br /><br />
+`7` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file.
 
 
-<br /><br /><br />
+<br /><br />
 ## To be Fixed/Tested/Solved
 
 ### 1. Operating system compatibility (Applicable for Agent endpoints 5,6,7,8)
