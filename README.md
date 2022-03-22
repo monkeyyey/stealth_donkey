@@ -9,8 +9,13 @@ References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
+## Definitions
+Agent:
+Admin Server:
+Client/Client Machine:
+
 ## Prerequisites
-1. Install Agent dependencies
+1. Install Agent dependencies <br />
 The requirements file is in the Agent Branch, remember to cd to the Agent directory!<br />
 No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ```
@@ -21,13 +26,22 @@ pip install -r requirements.txt
 1. Using Flask (Python version of Express node.js)
 Our current Agent Server is created using Flask.
 2. Executing OS commands in using code
-Python: os.system("<Command>")
-Javascript: exec("<Command>")
 Since most of the commands will be 'customizable', string interpolation will be used quite often.
+Python:
+```
+os.system("<Command>")
+```
+Javascript:
+```
+exec("<Command>")
+```
+3. Using the Agent to monitor system information to detect malware and intrusion detection
+Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
-## Agent Server Endpoints Summary
+## Agent Server Endpoints summary
 1 and 2 are experimental endpoints used to send a file/zipfile to Admin server. <br />
 3 and 4 are endpoints used to download a file/zipfile from Admin server. <br />
+5 is and endpoint for command execution on the Client, with the choice to save the result in a specific location on the Client. <br />
   
 ## Agent Server Endpoints 
 1. Hard coded endpoint that sends back file
