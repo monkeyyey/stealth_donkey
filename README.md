@@ -15,7 +15,7 @@ Admin Server:
 Client/Client Machine:
 
 ## Prerequisites
-1. Install Agent dependencies <br />
+### 1. Install Agent dependencies <br />
 The requirements file is in the Agent Branch, remember to cd to the Agent directory!<br />
 No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ```
@@ -23,10 +23,9 @@ pip install -r requirements.txt
 ```
 
 ## Things to learn
-1. Using Flask (Python version of Express node.js) <br />
+### 1. Using Flask (Python version of Express node.js) <br />
 Our current Agent Server is created using Flask. <br />
-2. Executing OS commands in using code <br />
-Since most of the commands will be 'customizable', string interpolation will be used quite often. <br />
+### 2. Executing OS commands in using code <br />
 Python:
 ```
 os.system("<Command>")
@@ -44,9 +43,12 @@ Currently have zero knowledge on this. This component is the most important, as 
 5 is and endpoint for command execution on the Client, with the choice to save the result in a specific location on the Client. <br />
   
 ## Agent Server Endpoints 
-1. Hard coded endpoint that sends back file
+### 1. Hard coded endpoint that sends back file
 Upon receiving get request, it sends back a downloadable file by referring to a hard coded variable.
-2. Hard coded endpoint that sends back zip file
+### 2. Hard coded endpoint that sends back zip file
+Upon receiving get request, it zips a folder and sends back a downloadable zip file by referring to hard coded variables.
   
-# To be Fixed/Tested
-1. Operating system compatibility (For endpoints 5,6,7,8)
+## To be Fixed/Tested
+### 1. Operating system compatibility (For endpoints 5,6,7,8)
+Right now, there is a problem regarding how to traverse directories in Windows. For example, entering location to output a file in linux may look something like this: "./animal/money.txt". In windows, some commands require the input to look like this "animal\money.txt". From my experience, this is very inconsistent across different commands. <br />
+In summary, just fix this problem by testing and tweaking the code.
