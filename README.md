@@ -83,7 +83,7 @@ sudo apt-get install openssh-server
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
-Ensure ssh server is running: `netstat -tupln`:
+Ensure ssh server is running, `netstat -tupln`:
 ```
 (Not all processes could be identified, non-owned process info
  will not be shown, you would have to be root to see it all.)
