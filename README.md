@@ -9,12 +9,13 @@ References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
 
-<br /><br /><br /><br /><br />
+<br /><br /><br />
 ## Definitions
 `Agent`: Script running on Client Machine <br />
 `Client`/`Client Machine`: Machine which the Agent is monitoring <br />
 `Admin Server`: Administrative server that communicates with Agent, has a web interface
 
+<br /><br /><br />
 ## Technical Prerequisites
 
 ### 1. Install Agent dependencies <br />
@@ -96,6 +97,7 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 ```
 SSH runs on port `22`, so just check ah brother.
 
+<br /><br /><br />
 ## Good-to-Know 
 ### 1. The Folders required in Agent Branch are not there
 Folders to create in `/Agent` Directory before testing: `/databack`, `/retrieval`, `/send_ssh`
@@ -106,6 +108,7 @@ At the current stage, the OS compatibility of Agent is only so that you can easi
 ### 4. Ur mum is gae
 Yup.
 
+<br /><br /><br />
 ## Things to learn before starting
  
 ### 1. Using Flask (Python version of Express node.js)
@@ -125,6 +128,7 @@ exec("<Command>")
 ### 3. Using the Agent to monitor system information to detect malware and intrusion detection
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
+<br /><br /><br />
 ## Agent Server Endpoints summary
 1 and 2 are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br />
 3 and 4 are endpoints used to download a file/zipfile from `Admin server`. <br />
@@ -132,7 +136,8 @@ Currently have zero knowledge on this. This component is the most important, as 
 6 is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.
 7 is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file.
 
-  
+
+<br /><br /><br />
 ## To be Fixed/Tested/Solved
 
 ### 1. Operating system compatibility (Applicable for Agent endpoints 5,6,7,8)
