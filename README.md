@@ -25,6 +25,14 @@ pip install -r requirements.txt
 
 ### 3. Setting up SSH server
 
+## Good-to-Know 
+### 1. The Folders required in Agent Branch are not there
+Folders to create in /Agent Directory before testing: /databack, /retrieval, /send_ssh
+### 2. Both the Agent and Admin are 'servers' and 'clients'
+As they exchange information with each other, they both require endpoints. Difference is that Admin server has Web interface.
+### 3. Ur mum is gae
+Yup.
+
 ## Things to learn before starting
 ### 1. Using Flask (Python version of Express node.js)
 Our current Agent Server is created using Flask.
