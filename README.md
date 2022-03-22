@@ -139,12 +139,13 @@ Currently have zero knowledge on this. This component is the most important, as 
 
 
 <br /><br />
-## Agent Server Endpoints summary
+## Agent Endpoints summary
 `1` and `2` are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br /><br />
 `3` and `4` are endpoints used to download a file/zipfile from `Admin server`. <br /><br />
 `5` is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br /><br />
 `6` is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.<br /><br />
-`7` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file.
+`7` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file. <br /> <br />
+`8` is an endpoint for collecting specific files on client straight back to `Admin Server`.
 
 
 <br /><br />
