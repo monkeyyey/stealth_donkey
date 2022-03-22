@@ -28,7 +28,7 @@ No need to install dependencies in the `Admin Server`, they are in the node_modu
 
 
 ### 2. Setting up Client Machine
-
+<br />
 
 #### i. Installing sshpass 
 `sshpass` is used to include password in `scp` request, to prevent prompt for password.
@@ -41,7 +41,7 @@ yum upgrade
 yum install epel-release
 yum install sshpass 
 ```
-
+<br />
 
 #### ii. Adding Agent as systemd service
 This ensures that `Agent` is able to run in background, upon startup. Change the `<names>` and `<filepaths>` to what is appropriate for you. <br /> <br />
