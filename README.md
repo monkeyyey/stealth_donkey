@@ -25,7 +25,7 @@ The requirements file is in the Agent Branch, remember to `cd` to the `Agent` di
 pip install -r requirements.txt
 ```
 No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
-
+<br />
 
 ### 2. Setting up Client Machine
 <br />
