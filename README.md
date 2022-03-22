@@ -34,14 +34,13 @@ yum install epel-release
 yum install sshpass 
 ```
 #### ii. Adding Agent as systemd service
-This ensures that Agent is able to run in background, upon startup. <br />
-Change the <names> and <filepaths> to what is appropriate for you. 
+This ensures that Agent is able to run in background, upon startup. Change the <names> and <filepaths> to what is appropriate for you. 
 ```
 # create .service file
 cd /etc/systemd/system
 touch <service_name>.service
 ```
-Open the .service file in a file editor and enter this
+Open the .service file in a file editor and enter this:
 ```
 [Unit]
 Description=Stealth agent that monitor ur fat ass
@@ -60,8 +59,17 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=%n
 ```
+Now we just need to reload the system daemon + start the service
+```
+sudo systemctl daemon-reload
+sudo systemctl enable <service_name>.service
+sudo systemctl start <service_name>.service
+```
+`systemctl enable` ensures that service always starts upon bootup! 
+
 
 ### 3. Setting up SSH server
+
 
 ## Good-to-Know 
 ### 1. The Folders required in Agent Branch are not there
