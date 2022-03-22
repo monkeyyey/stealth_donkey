@@ -1,6 +1,8 @@
 # stealth_donkey
 Stealth Donkey is a work-in-progress Proof-of-Concept(POC) project, a framework which can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
 
+The framework should be able to be customizable for various OS and/or type of information to be collected. 
+
 With the framework in place, a system administrator can apply it to monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level. 
 
 References:
@@ -9,6 +11,8 @@ References:
 
 ## Prerequisites
 1. Install Agent dependencies
+The requirements file is in the Agent Branch, remember to cd to the Agent directory!<br />
+No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ```
 pip install -r requirements.txt
 ```
@@ -22,11 +26,13 @@ Javascript: exec("<Command>")
 Since most of the commands will be 'customizable', string interpolation will be used quite often.
 
 ## Agent Server Endpoints Summary
-1 and 2 are experimental endpoints that sends back a downloadable file/zipfile. <br />
-3 and 4 are endpoints that receives an external request, then itself makes a request to the 
+1 and 2 are experimental endpoints used to send a file/zipfile to Admin server. <br />
+3 and 4 are endpoints used to download a file/zipfile from Admin server. <br />
+  
 ## Agent Server Endpoints 
 1. Hard coded endpoint that sends back file
 Upon receiving get request, it sends back a downloadable file by referring to a hard coded variable.
 2. Hard coded endpoint that sends back zip file
+  
 # To be Fixed/Tested
-1. Operating system compatibility (For )
+1. Operating system compatibility (For endpoints 5,6,7,8)
