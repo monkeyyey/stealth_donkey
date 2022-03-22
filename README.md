@@ -16,7 +16,7 @@ Javascript: exec("<Command>")
 Since most of the commands will be 'customizable', string interpolation will be used quite often.
 
 ## Agent Server Endpoints Summary
-1 and 2 are experimental endpoints that sends back a downloadable file/zipfile
+1 and 2 are experimental endpoints that sends back a downloadable file/zipfile <br />
 3 and 4 are endpoints that receives a request, then
 ## Agent Server Endpoints 
 1. Hard coded endpoint that sends back file
