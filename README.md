@@ -110,7 +110,7 @@ Yup.
 Our current Agent Server is created using Flask.
   
 ### 2. Executing OS commands using code
-Most of the functionalities are made possible by using OS commands <br />
+Most of the functionalities are made possible by using OS commands <br /> <br />
 Python:
 ```
 os.system("<Command>")
@@ -124,9 +124,10 @@ exec("<Command>")
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
 
 ## Agent Server Endpoints summary
-1 and 2 are experimental endpoints used to send a file/zipfile to Admin server. <br />
-3 and 4 are endpoints used to download a file/zipfile from Admin server. <br />
-5 is and endpoint for command execution on the Client, with the choice to save the result in a specific location on the Client. <br />
+1 and 2 are experimental endpoints used to send a file/zipfile to `Admin server`. <br />
+3 and 4 are endpoints used to download a file/zipfile from `Admin server`. <br />
+5 is and endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br />
+
   
 ## Agent Server Endpoints 
  
