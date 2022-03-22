@@ -16,11 +16,11 @@ Client/Client Machine:
 
 ## Technical Prerequisites
 ### 1. Install Agent dependencies <br />
-The requirements file is in the Agent Branch, remember to cd to the Agent directory!<br />
-No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
+The requirements file is in the Agent Branch, remember to cd to the Agent directory!
 ```
 pip install -r requirements.txt
 ```
+No need to install dependencies in the Admin server, they are in the node_modules folder (i think).
 ### 2. Setting up Client Machine
 
 ### 3. Setting up SSH server
