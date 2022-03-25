@@ -18,7 +18,7 @@ References:
 <br /> <br />
 ## Diagram of Current architecture
 ### 1. With Online Agent
-For Online Agent, Admin sends instructions to the Agent. <br />
+For Online Agent, Admin sends instructions to the Agent. <br /><br />
 ![alt text](https://github.com/monkeyyey/stealth_donkey/blob/main/git_images/agent.PNG)
 ### 2. With Local Agent
 ![alt text](https://github.com/monkeyyey/stealth_donkey/blob/main/git_images/local_agent.PNG)
