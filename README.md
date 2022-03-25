@@ -21,7 +21,10 @@ References:
 For Online Agent, Admin sends instructions to the Agent. <br /><br />
 ![alt text](https://github.com/monkeyyey/stealth_donkey/blob/main/git_images/agent.PNG)
 ### 2. With Local Agent
+For Online Agent, instructions are read from a local file. <br /><br />
 ![alt text](https://github.com/monkeyyey/stealth_donkey/blob/main/git_images/local_agent.PNG)
+<br />
+We may combine the 2 different functionalities after finishing both of these.
 
 
 <br /><br />
