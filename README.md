@@ -112,16 +112,13 @@ SSH runs on port `22`, so just check ah brother.
 <br /><br />
 ## Good-to-Know 
 
-### 1. The Folders required in Agent Branch are not there
-Folders to create in `/Agent` Directory before testing: `/databack`, `/retrieval`, `/send_ssh`
-
-### 2. Both the Agent and Admin are 'servers' and 'clients'
+### 1. Both the Agent and Admin are 'servers' and 'clients'
 As they exchange information with each other, they both require endpoints. Difference is that `Admin Server` has Web interface.
 
-### 3. Operating System Compatibility
-At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine, and maybe to impress KK.
+### 2. Operating System Compatibility
+At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine, and maybe to impress KK. Our final project will be mainly focused on Oracle Linux.
 
-### 4. Ur mum is gae
+### 3. Ur mum is gae
 Yup.
 
 
