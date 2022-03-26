@@ -157,7 +157,7 @@ Currently have zero knowledge on this. This component is the most important, as 
 `7` is an endpoint for collecting specific files on client straight back to `Admin Server`.
 `8` and `9` are follow up endpoints from endpoint `7` to send the file/zipfile to admin server
 
-For endpoint `7`, `8`, `9`: <br />
+### For endpoint `7`, `8`, `9`: <br />
 `7` Receives request for file collection, copy files to 'retrieval' folder (if there are multiple files)
 `Admin Server` creates another request to own backend `controllers/exec.js`, which makes a curl request to `Agent` endpoint `8` and `9`, depending on whether there are one or more than one files to retrieve <br />
 `8` or `9` then sends the file/zip file back to `Admin Server`
