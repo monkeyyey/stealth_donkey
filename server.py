@@ -45,7 +45,7 @@ def getFile():
     # file type in params invalid
     return Response(status=400)
 
-#5. Command Execution + output to file
+#4. Command Execution + output to file
 @app.route("/command", methods = ['POST'])
 def command():
 
@@ -65,7 +65,7 @@ def command():
 
     return Response(status=201)
 
-#6. Collection of specific files + copy to specific folder
+#5. Collection of specific files + copy to specific folder
 @app.route("/file_collection", methods = ['POST'])
 def file_collection():
 
@@ -98,7 +98,7 @@ def file_collection():
     
     return Response(status=201)
 
-#7. Send files to another server via SSH
+#6. Send files to another server via SSH
 @app.route("/ssh_send", methods = ['POST'])
 def ssh_send():
 
@@ -148,18 +148,20 @@ def file_retrieval():
     # Retreive JSON data + Assign variables
     request_data = request.get_json()
     file_location = request_data['file_location']
+
     # Splitting the file input to check length + strip blank space
     file_location = list(map(str.strip, file_location.split(',')))
-    print(file_location)
+
     # copy files to 'retrieval folder'
-    if operating_system == 'Windows':
-        for file in file_location:
-            file2 = file.split('\\')[-1]
-            os.system(f'copy {file} retrieval\{file2}')
-    else:
-        for file in file_location:
-            file2 = file.split('/')[-1]
-            os.system(f'cp {file} ./retrieval/{file2}')
+    if len(file_location) != 1:
+        if operating_system == 'Windows':
+            for file in file_location:
+                file2 = file.split('\\')[-1]
+                os.system(f'copy {file} retrieval\{file2}')
+        else:
+            for file in file_location:
+                file2 = file.split('/')[-1]
+                os.system(f'cp {file} ./retrieval/{file2}')
 
     return Response(status=201)
 
@@ -169,9 +171,10 @@ def file_retrieval_file():
     file = request.args.get("file")
     return send_file(file)
 
-#8. Retrieve zip from endpoint 7
+#9. Retrieve zip from endpoint 7
 @app.route("/file_retrieval_zip", methods = ['GET'])
 def file_retrieval_zip():
+    
     # zip 'retrieval' directory
     shutil.make_archive('retrieval', 'zip','./retrieval')
 
