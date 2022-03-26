@@ -199,43 +199,40 @@ def file_retrieval():
     file_location = file_location.split(',')
     for file in file_location: file = file.strip()
 
-    # One file only
-    if len(file_location) == 1:
-        return send_file(f'{file_location[0]}', as_attachment=True)
-    
-    # More than one file  
+    # copy files to 'retrieval folder'
+    if retrieval_os == 'Windows':
+        for file in file_location:
+            file2 = file.split('\\')[-1]
+            os.system(f'copy {file} retrieval\{file2}')
     else:
+        for file in file_location:
+            file2 = file.split('/')[-1]
+            os.system(f'cp {file} ./retrieval/{file2}')
 
-        # copy files to 'retrieval folder'
-        if retrieval_os == 'Windows':
-            for file in file_location:
-                file2 = file.split('\\')[-1]
-                os.system(f'copy {file} retrieval\{file2}')
-        else:
-            for file in file_location:
-                file2 = file.split('/')[-1]
-                os.system(f'cp {file} ./retrieval/{file2}')
-        
-        # creating zip object
-        fileobj = io.BytesIO()
-        with ZipFile(fileobj, 'w') as zipObj:
-            # Iterate over all the files in directory
-            for folderName, subfolders, filenames in os.walk('retrieval'):
-                for filename in filenames:
-                    # create complete filepath of file in directory
-                    filePath = os.path.join(folderName, filename)
-                    # Add file to zip
-                    zipObj.write(filePath)
-        fileobj.seek(0)  
-        file_data = fileobj.getvalue()
+    return Response(status=201)
 
-        # Emptying the 'retrieval' folder after sending to avoid cluttering
-        if retrieval_os == 'Windows':
-            os.system(f'del /S /q retrieval')
-        else:
-            os.system(f'rm -r retrieval/*')   
+#8. Retrieve file from endpoint 7
 
-        return Response(file_data, mimetype='application/zip', headers={'Content-Disposition': 'attachment;filename=retrieval.zip'})
+    # creating zip object
+    fileobj = io.BytesIO()
+    with ZipFile(fileobj, 'w') as zipObj:
+        # Iterate over all the files in directory
+        for folderName, subfolders, filenames in os.walk('retrieval'):
+            for filename in filenames:
+                # create complete filepath of file in directory
+                filePath = os.path.join(folderName, filename)
+                # Add file to zip
+                zipObj.write(filePath)
+    fileobj.seek(0)  
+    file_data = fileobj.getvalue()
+
+    # Emptying the 'retrieval' folder after sending to avoid cluttering
+    if retrieval_os == 'Windows':
+        os.system(f'del /S /q retrieval')
+    else:
+        os.system(f'rm -r retrieval/*')   
+
+    return Response(file_data, mimetype='application/zip', headers={'Content-Disposition': 'attachment;filename=retrieval.zip'})
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
