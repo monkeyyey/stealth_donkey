@@ -20,5 +20,6 @@ app.use(require('./controllers/view'));
 // Map api
 app.use('/api/file', require('./controllers/send_file'))
 app.use('/api/auth', require('./controllers/auth'))
+app.use('/api/exec', require('./controllers/exec'))
 
 module.exports = app;
