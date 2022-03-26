@@ -154,7 +154,7 @@ Currently have zero knowledge on this. This component is the most important, as 
 `4` is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br /><br />
 `5` is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.<br /><br />
 `6` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file. <br /> <br />
-`7` is an endpoint for collecting specific files on client straight back to `Admin Server`.
+`7` is an endpoint for collecting specific files on client straight back to `Admin Server`. <br /> <br />
 `8` and `9` are follow up endpoints from endpoint `7` to send the file/zipfile to admin server
 
 ### For endpoint `7`, `8`, `9`: <br />
