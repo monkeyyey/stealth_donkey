@@ -1,9 +1,12 @@
 <html>
    <head>
       <script>
-         
-         const baseUrl = "http://192.168.1.118:5000"
-         // const baseUrl = "http://192.168.1.81:5000"
+        // 2 Base Urls, one for local computer, one for oracle linux VM, change urself
+        // const baseUrl = "http://192.168.1.118:5000"
+        const baseUrl = "http://192.168.1.81:5000"
+
+        // admin server url
+        const adminurl = "http://192.168.1.81:8080"
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -15,11 +18,6 @@
          <h5>Syntax for Linux: ./databack/data.txt, ./databack/pwd.txt</h5>
          <h5>Syntax for Windows: databack\data.txt, databack\pwd.txt</h5>
          <form id="file_retrieval_form">
-            <p>Choose Client Operating System:</p>
-            <p><select id="retrieval_os">
-               <option value="Linux">Linux</option>
-               <option value="Windows">Windows</option>
-            </select></p>
             <p>Full File locations, seperate by comma:</p>
             <p><input type = "text" id="file_location"/></p>
             <p><input type = "submit" onclick="retrieval_form()"/></p>
@@ -47,11 +45,6 @@
          <h5>Files will always be zipped to the Output folder location, regardless of whether the file is going to be sent back to the server.</h4>
          <h5>Zip File will be saved as such: output_folder_location/file.zip</h5>
          <form id="file_copy_form">
-            <p>Choose Client Operating System:</p>
-            <p><select id="OS">
-               <option value="Linux">Linux</option>
-               <option value="Windows">Windows</option>
-            </select></p>
             <p>Enter files, seperate by comma:</p>
             <p><input type = "text" id = "files" /></p>
             <p>Enter Output Folder Location:</p>
@@ -69,11 +62,6 @@
          <h2 class=""><u>Send Collected files to another Server via SSH</u></h2>
          <h5>Machines must have accessed the ssh server before for this to work</h5>
          <form id="send_ssh">
-            <p>Choose Client Operating System:</p>
-            <p><select id="ssh_OS">
-               <option value="Linux">Linux</option>
-               <option value="Windows">Windows</option>
-            </select></p>
             <p>SSH Server IP:</p>
             <p><input type = "text" id = "ssh_ip" /></p>
             <p>SSH Server Username:</p>
@@ -113,13 +101,11 @@
 
          function file_copy_form(){
             event.preventDefault()
-            const OS = document.getElementById("OS").value
             const files = document.getElementById("files").value
             const output = document.getElementById("output").value
             const collect = document.getElementById("collect").value
 
             var requestBody = {
-               OS: OS,
                files: files,
                output: output,
                collect: collect,
@@ -145,7 +131,6 @@
 
          function ssh_form(){
             event.preventDefault()
-            const ssh_OS = document.getElementById("ssh_OS").value
             const ssh_ip = document.getElementById("ssh_ip").value
             const ssh_user = document.getElementById("ssh_user").value
             const ssh_pass= document.getElementById("ssh_pass").value
@@ -153,71 +138,44 @@
             const ssh_output = document.getElementById("ssh_output").value
 
             var requestBody = {
-               ssh_OS: ssh_OS,
                ssh_ip: ssh_ip,
                ssh_user: ssh_user,
                ssh_pass: ssh_pass,
                ssh_files: ssh_files,
                ssh_output: ssh_output
             }
-
             
             axios.post(`${baseUrl}/ssh_send`, requestBody)
          }
          
          function retrieval_form(){
             event.preventDefault()
-            const retrieval_os = document.getElementById("retrieval_os").value
-            const file_location = document.getElementById("file_location").value
+            var file_location = document.getElementById("file_location").value
             var requestBody = {
-            retrieval_os: retrieval_os,
-            file_location: file_location
+                file_location: file_location
             }
+            file_location_length = file_location.split(',') 
             // For single file retrieval
-            if (file_location.split(',').length == 1){
-               axios({
-                  url: `${baseUrl}/file_retrieval`, //your url
-                  method: 'POST',
-                  data: requestBody,
-                  responseType: 'blob', // important
-               }).then((response) => {
-                  //const url = window.URL.createObjectURL(new Blob([response.data]));
-                  //const link = document.createElement('a');
-                  //link.href = url;
-                  //link.setAttribute('download', 'retrieval.txt'); //or any other extension
-                  //document.body.appendChild(link);
-                  //link.click();
+            if (file_location_length.length == 1){
+               axios.post(`${baseUrl}/file_retrieval`, requestBody).then((response) => {
                   var file = response.data.file
-                  if response.status == 201 {
-                     exec(`curl {baseUrl}/api/retrieve?file > ./retrieval/retrieval.zip`)  
+                  if (response.status == 201) {
+                    axios.post(`${adminurl}/api/exec`, {file_location : file_location, zip : "No"})
                   }
-               });
+               })
             }
             // For multiple file retrieval (result is sent back as zip)
             else {
-               axios({
-                  url: `${baseUrl}/file_retrieval`, //your url
-                  method: 'POST',
-                  responseType:'application/zip',
-                  dataType: 'json',
-                  data: requestBody,
-                  responseType: 'blob', // important
-               }).then((response) => {
-                  //console.log(response)
-                  //let blob = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }))
-                  //let a = document.createElement("a"); 
-                  //a.href = blob;
-                  //a.setAttribute('download', 'retrieval.zip');
-                  //document.body.appendChild(a);
-                  //a.click();
+               axios.post(`${baseUrl}/file_retrieval`, requestBody).then((response) => {
                   var file = response.data.file
-                  if response.status == 201 {
-                     exec(`curl {baseUrl}/api/retrieve?file > ./retrieval/retrieval.zip`)  
+                  if (response.status == 201) {
+                     axios.post(`${adminurl}/api/exec`, {file_location : file_location, zip : "Yes"})
                   }
-               });
+               })
             }
             
          }
       </script>
    </body>
 </html>
+
