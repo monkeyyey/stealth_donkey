@@ -62,8 +62,6 @@
                <option value="No">No</option>
             </select>
             </p>
-            <p>Name of zip file to collect back to server:</p>
-            <p><input type = "text" id = "zipfile" /></p>
             <p><input type = "submit" onclick="file_copy_form()" /></p>
          </form>   
       </div>
@@ -119,15 +117,14 @@
             const files = document.getElementById("files").value
             const output = document.getElementById("output").value
             const collect = document.getElementById("collect").value
-            const zipfile = document.getElementById("zipfile").value
 
             var requestBody = {
                OS: OS,
                files: files,
                output: output,
                collect: collect,
-               zipfile: zipfile
             }
+            
             axios({
                   url: `${baseUrl}/file_collection`, //your url
                   method: 'POST',
