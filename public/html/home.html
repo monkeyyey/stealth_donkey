@@ -184,16 +184,12 @@
                   data: requestBody,
                   responseType: 'blob', // important
                }).then((response) => {
-                  //const url = window.URL.createObjectURL(new Blob([response.data]));
-                  //const link = document.createElement('a');
-                  //link.href = url;
-                  //link.setAttribute('download', 'retrieval.txt'); //or any other extension
-                  //document.body.appendChild(link);
-                  //link.click();
-                  var file = response.data.file
-                  if response.status == 201 {
-                     exec(`curl {baseUrl}/api/retrieve?file > ./retrieval/retrieval.zip`)  
-                  }
+                  const url = window.URL.createObjectURL(new Blob([response.data]));
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.setAttribute('download', 'retrieval.txt'); //or any other extension
+                  document.body.appendChild(link);
+                  link.click();
                });
             }
             // For multiple file retrieval (result is sent back as zip)
@@ -206,17 +202,13 @@
                   data: requestBody,
                   responseType: 'blob', // important
                }).then((response) => {
-                  //console.log(response)
-                  //let blob = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }))
-                  //let a = document.createElement("a"); 
-                  //a.href = blob;
-                  //a.setAttribute('download', 'retrieval.zip');
-                  //document.body.appendChild(a);
-                  //a.click();
-                  var file = response.data.file
-                  if response.status == 201 {
-                     exec(`curl {baseUrl}/api/retrieve?file > ./retrieval/retrieval.zip`)  
-                  }
+                  console.log(response)
+                  let blob = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }))
+                  let a = document.createElement("a"); 
+                  a.href = blob;
+                  a.setAttribute('download', 'retrieval.zip');
+                  document.body.appendChild(a);
+                  a.click();
                });
             }
             
