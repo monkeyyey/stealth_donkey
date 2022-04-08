@@ -33,9 +33,10 @@ We may combine the 2 different functionalities after finishing both of these.
 
 
 ### 1. Install Agent dependencies <br />
+*This step applies if you are installing agent on Oracle or any other Linux distros*
 The requirements file is in the Agent Branch, remember to `cd` to the `Agent` directory!
 ```
-pip install -r requirements.txt
+pip install -r oracle_requirements.txt
 ```
 No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
 <br /><br />
