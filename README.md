@@ -1,5 +1,4 @@
 # Online_Agent
-## Folders + Related endpoints
-/retrieval >> endpoint 8 <br />
-/databack >> endpoint 1 <br />
-/send_ssh >> endpoint 7
+## Files
+1. oracle_requirements.txt
+2. windows_requirements.txt 
