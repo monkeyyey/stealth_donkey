@@ -41,7 +41,12 @@ pip install -r oracle_requirements.txt
 No need to install dependencies in the `Admin Server`, they are in the node_modules folder (i think).
 <br /><br />
 
-### 2. Setting up Client Machine
+### 2. Configure Models/DatabaseConfig.js
+Modify so that you can connect to your mysql databasae
+<br /><br />
+
+
+### 3. Setting up Client Machine
 
 #### i. Installing sshpass 
 `sshpass` is used to include password in `scp` request, to prevent prompt for password.
