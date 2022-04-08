@@ -149,18 +149,17 @@ Currently have zero knowledge on this. This component is the most important, as 
 
 <br /><br />
 ## Agent Endpoints summary
-`1` and `2` are experimental endpoints used to send a file/zipfile to `Admin server`, variables are still hard coded. <br /><br />
-`3` is an endpoints used to download a file/zipfile from `Admin server`. <br /><br />
-`4` is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br /><br />
-`5` is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.<br /><br />
-`6` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file. <br /> <br />
-`7` is an endpoint for collecting specific files on client straight back to `Admin Server`. <br /> <br />
-`8` and `9` are follow up endpoints from endpoint `7` to send the file/zipfile to admin server
+`1` is an endpoints used to download a file/zipfile from `Admin server`. <br /><br />
+`2` is an endpoint for command execution on the `Client`, with the choice to save the result in a specific location on the `Client`. <br /><br />
+`3` is an endpoint for collecting specific files on the `Client`, and copying them to a specific folder, with the choice to retrieve this folder as a zip file.<br /><br />
+`4` is an endpoint for collecting specific files on the `Client`, and sending them to an SSH server as a zip file. <br /> <br />
+`5` is an endpoint for collecting specific files on client straight back to `Admin Server`. <br /> <br />
+`6` and `7` are follow up endpoints from endpoint `5` to send the file/zipfile to admin server
 
-### For endpoint `7`, `8`, `9`: <br />
-`7` Receives request for file collection, copy files to 'retrieval' folder (if there are multiple files)
-`Admin Server` creates another request to own backend `controllers/exec.js`, which makes a curl request to `Agent` endpoint `8` and `9`, depending on whether there are one or more than one files to retrieve <br />
-`8` or `9` then sends the file/zip file back to `Admin Server`
+### For endpoint `5`, `6`, `7`: <br />
+`5` Receives request for file collection, copy files to 'retrieval' folder (if there are multiple files)
+`Admin Server` creates another request to own backend `controllers/exec.js`, which makes a curl request to `Agent` endpoint `6` and `7`, depending on whether there are one or more than one files to retrieve <br />
+`6` or `7` then sends the file/zip file back to `Admin Server`
 
 
 <br /><br />
