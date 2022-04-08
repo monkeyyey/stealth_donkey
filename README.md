@@ -8,6 +8,7 @@ With the framework in place, a system administrator can monitor and gather vital
 References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
+3.	WAZUH source code: https://github.com/wazuh/wazuh
 
 <br /><br />
 ## Definitions
@@ -165,22 +166,12 @@ Currently have zero knowledge on this. This component is the most important, as 
 <br /><br />
 ## To be Fixed/Tested/Solved
 
-### 1. Operating system compatibility (Applicable for Agent endpoints 5,6,7,8)
-There is a problem regarding how to traverse directories in Windows. For example, entering location to output a file in linux may look something like this: `"./animal/money.txt"`. In windows, some commands require the input to look like this `"animal\money.txt"`. From my experience, this is very inconsistent across different commands. <br />
-In summary, just fix this problem by testing and tweaking the code's OS commands.
-
-### 2. How to automate answering of OS command replies (Applicable to Agent Endpoints)
+### 1. How to automate answering of OS command replies (Applicable to Agent Endpoints)
 Right now, I can only execute OS commands, but I am unable to answer anything AFTER the command is executed. For Example, I am unable to execute commands like SSH logins, where I need to enter a password after I enter the SSH commands.<br />
 I have managed to use workarounds for these problems like `sshpass` and adding `--insecure` to curl commands. But some workarounds may require the Client machine to install certain services, which is not practical from the client perspective as our agent is supposed to be 'Stealthy'.
 
-### 3. How to download files directly to folder (Applicable to Admin Endpoints in home.html)
-Right now, files that are received by the `Admin` from the `Agent` is downloadable files, but this requires user action to choose where the folder is downloaded. Automating this is more practical from Admin perspective.
-
-### 4. Login.html
-The CSS and other stuff haven't link properly.
-
-### 5. Reading Local Instructions
-Right now the Agent is getting intructions through the Admin Server. Our aim is to make the Agent read the instructions from a local file.
+### 2. Automatically run Agent functions at time intervals
+Now only can read from local, then admin activate by clicking button. Need to make it run automatically at time intervals
 
 
 
