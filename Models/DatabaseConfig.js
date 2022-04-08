@@ -6,7 +6,7 @@ var dbconnect = {
             host: "localhost",
             port: 3306,
             user: "root",
-            password: "wobuai88",
+            password: "",
             database: "agent",
             // retain date as a string
             dateStrings: true,
