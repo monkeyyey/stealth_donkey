@@ -1,0 +1,8 @@
+{
+	"filename": "boomzikau.json",
+	"endpoints": {
+		"retrieval": {
+			"file_location": "./test_command/command.txt, ./test_command/shadow.txt"
+		}
+	}
+}

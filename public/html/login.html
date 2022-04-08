@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <meta name="viewport" content="width:device-width, initial-scale=1.0" /> <!-- do this to make website responsive -->
+        <script>
+            const baseUrl = "http://192.168.1.81:8080"
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <link href="http://192.168.1.81:8080/css/login.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/801503bc53.js" crossorigin="anonymous"></script> <!-- to use font awesome icons -->
+    </head>
+
+    <body>
+        <header>
+            <div class="container" id="default-header">
+                <img src="http://192.168.1.81:8080/img/bannerblue.jpg" alt="banner">
+                <div class="centered"><p class="display-1">Stealth Donkey</p></div>
+            </div>
+        </header>
+
+        <section id="#login-form">
+            <div class="row">
+                <div class="col-lg-6" id="login-img">
+                    <img src="http://192.168.1.81:8080/img/login.webp">
+                </div>
+    
+                <div class="col-lg-6" id="login-area">
+                    <form id="login-submit">
+                        <h6>Username</h6>
+                        <input type="text" id="username" placeholder="Username" id="username">
+    
+                        <h6>Password</h6>
+                        <input type="password" id="password"/>
+
+                        <div class="row" id="login-btn">
+                            <button type="submit" onclick="login()">LOGIN</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            
+        </section>
+        <script>
+            function login(){
+                // prevent page reload
+                event.preventDefault();
+
+                const username = $("#username").val();
+                const password = $("#password").val();
+
+                const requestBody = {
+                    username: username,
+                    password: password
+                };
+
+                axios.post(`${baseUrl}/api/auth/login`, requestBody)
+                    .then((response) => {
+                        const admin = response.data.admin
+                        if (response.data.admin == 1){
+                            window.location.href = "/home"
+                        }
+                        else{
+                            alert("You are not admin!");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        if (error.response.status === 401) {
+                            alert("Wrong login info");
+                        } else {
+                            alert("Something unexpected went wrong.");
+                        }
+                });
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+<html>
+   <head>
+      <script>
+        // 2 Base Urls, one for local computer, one for oracle linux VM, change urself
+        const baseUrl = "http://192.168.1.81:5000"
+        //const baseUrl = "http://192.168.1.81:5000"
+
+        // admin server url
+        const adminurl = "http://192.168.1.81:8080"
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   </head>
+   <style>
+       hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 4px solid rgba(0, 0, 0, 1);
+        }
+   </style>
+   <body>
+      <nav
+            class="navbar navbar-expand-md navbar-dark bg-dark"
+            style="z-index: 3"
+        >
+            <a class="navbar-brand ml-4" href="/">Stealth Donkey</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarContent"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav md-auto" id="navbarr">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/control">Agent Control</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/button">Button Control</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/creator">JSON Creator</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+      <div>
+        <div class="p-3">
+            <h2><u>Agent Creator</u></h2>
+            <h4>Agent File name (xxx.py)</h4>
+            <input type="text" id="agent_name"><br>
+            <h4>Select Agent Function:</h4>
+            <select name="cars" id="agent_type">
+                <option value="local">Local</option>
+                <option value="online">Online</option>
+            </select>
+            <form id="file_retrieval_form">
+            <h4>Select Agent Function:</h4>
+            <label>getfile: endpoint3 </label>
+            <input type="checkbox" id="getfile" value="getfile"><br>
+            <label>command execution: endpoint4</label>
+            <input type="checkbox" id="cmd" value="cmd"><br>
+            <label>copy file to specific folder: endpoint5</label>
+            <input type="checkbox" id="copy" value="copy"><br>
+            <label>copy files to ssh server: endpoint6</label>
+            <input type="checkbox" id="ssh" value="ssh"><br>
+            <label>file retrieval: endpoint7/8/9</label>
+            <input type="checkbox" id="retrieval" value="retrieval">
+            <p><input type = "submit" onclick="agent_form()"/></p>
+            </form>
+        </div>
+<hr>
+<hr>
+        <div class="p-3">
+            <h2><u>Config Creator</u></h2>
+            <p>Config File name (with xxx.json)</p>
+            <p><input type = "text" id="json_name"/></p>
+        </div>
+        
+        <div class="p-3">
+            <h2><u>File retrieval</u><input type="checkbox" id="retrieval2" value="retrieval"></h2>
+            <h5>Syntax for Linux: ./databack/data.txt, ./databack/pwd.txt</h5>
+            <h5>Syntax for Windows: databack\data.txt, databack\pwd.txt</h5>
+            <form id="file_retrieval_form">
+               <p>Full File locations, seperate by comma:</p>
+               <p><input type = "text" id="file_location"/></p>
+            </form>
+         </div>
+
+        <div class="p-3">
+            <h2><u>Command Execution + Save to file</u><input type="checkbox" id="cmd2" value="cmd"></h2>
+            <h5>Output file is in the Client</h5>
+            <form id="command_form">
+                <p>Enter Command:</p>
+                <p><input type = "text" name = "cmd" id="cmd3"/></p>
+                <p>Enter Output File Location (if empty, results will not be saved):</p>
+                <p><input type = "text" name = "output" id="command_output"/></p>
+                <p>Execution only (results will not be saved)</p>
+                <p><select id="exec_only">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+                </p>
+            </form>   
+        </div>
+         <div class="p-3">
+            <h2 class=""><u>Copy specific files to a folder</u><input type="checkbox" id="copy2" value="copy"></h2>
+            
+            <h5>Files will always be zipped to the Output folder location, regardless of whether the file is going to be sent back to the server.</h4>
+            <h5>Zip File will be saved as such: output_folder_location/file.zip</h5>
+            <form id="file_copy_form">
+               <p>Enter files, seperate by comma:</p>
+               <p><input type = "text" id = "files" /></p>
+               <p>Enter Output Folder Location:</p>
+               <p><input type = "text" id = "output" /></p>
+               <p>Collect back to Server:</p>
+               <p><select id="collect">
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+               </select>
+               </p>
+            </form>   
+         </div>
+         <div class="p-3">
+            <h2 class=""><u>Send Collected files to another Server via SSH</u><input type="checkbox" id="ssh2" value="ssh"></h2>
+            <h5>Machines must have accessed the ssh server before for this to work</h5>
+            <form id="send_ssh">
+               <p>SSH Server IP:</p>
+               <p><input type = "text" id = "ssh_ip" /></p>
+               <p>SSH Server Username:</p>
+               <p><input type = "text" id = "ssh_user" /></p>
+               <p>SSH Server Password:</p>
+               <p><input type = "text" id = "ssh_pass" /></p>
+               <p>Files to copy, seperate by comma:</p>
+               <p><input type = "text" id = "ssh_files" /></p>
+               <p>zip file name + location in SSH server (example: /home/desktop/ssh.zip):</p>
+               <p><input type = "text" id = "ssh_output" /></p>
+            </form>   
+         </div>
+         <p><input type = "submit" onclick="config_form()" /></p>
+      </div>
+      <script>
+        
+        function agent_form(){
+            event.preventDefault()
+            console.log("ddd")
+            const agent_name = $('#agent_name').val();
+            const type = $('#agent_type').val();
+            const getfile  = $('#getfile:checked').val();
+            const cmd  = $('#cmd:checked').val();
+            const copy  = $('#copy:checked').val();
+            const ssh  = $('#ssh:checked').val();
+            const retrieval  = $('#retrieval:checked').val();
+            const requestBody = {
+                agent_name: agent_name,
+                type: type,
+                getfile: getfile,
+                cmd: cmd,
+                copy: copy,
+                ssh: ssh,
+                retrieval: retrieval
+            }
+            axios.post(`${adminurl}/api/create/agent`, requestBody)
+        }  
+
+        function config_form(){
+            const json_name = $('#json_name').val()
+            data = `
+{
+    "filename": "${json_name}",
+    "endpoints":
+    {
+    `
+            const cmd  = $('#cmd2:checked').val();
+            const copy  = $('#copy2:checked').val();
+            const ssh  = $('#ssh2:checked').val();
+            const retrieval  = $('#retrieval2:checked').val();
+            if (cmd == "cmd"){
+                const cmd_input = $('#cmd3').val();
+                const command_output = $('#command_output').val();
+                const exec_only = $('#exec_only').val();
+
+                data += `"${cmd}" : {"cmd" : "${cmd_input}", "command_output": "${command_output}", "exec_only": "${exec_only}"}`
+
+            }
+            if (copy == "copy"){
+                if (cmd == "cmd"){
+                    data+=',\n\t'
+                }
+                const files = $('#files').val();
+                const output = $('#output').val();
+                const collect = $('#collect').val(); 
+
+                data += `"${copy}" : {"files": "${files}", "output": "${output}", "collect": "${collect}"}`
+            }
+            if (ssh == "ssh"){
+                if (copy == "copy"||cmd == "cmd"){
+                    data+=',\n\t'
+                }
+                const ssh_ip = $('#ssh_ip').val();
+                const ssh_user = $('#ssh_user').val();
+                const ssh_pass = $('#ssh_pass').val();
+                const ssh_files = $('#ssh_files').val();
+                const ssh_output = $('#ssh_output').val();
+
+                data += `"${ssh}" : {"ssh_ip":"${ssh_ip}", "ssh_user": "${ssh_user}", "ssh_pass": "${ssh_pass}", "ssh_files": "${ssh_files}", "ssh_output": "${ssh_output}"}`
+            }
+            if (retrieval == "retrieval"){
+                if (ssh == "ssh"||copy == "copy"||cmd == "cmd"){
+                    data+=',\n\t'
+                }
+                const file_location = $('#file_location').val()
+
+                data += `"retrieval" : {"file_location" : "${file_location}"}`
+            }
+            data += `
+    }
+}`
+            console.log(data)
+            axios.post(`${adminurl}/api/create/json`, JSON.parse(data))
+        }  
+      </script>
+   </body>
+</html>
+
