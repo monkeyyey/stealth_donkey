@@ -2,7 +2,7 @@ import fileinput
 import os, shutil, io
 import json
 from flask import Flask, send_file, request
-from flask import Response
+from flask import Response, jsonify
 from zipfile import ZipFile
 from flask_cors import CORS
 import platform
@@ -63,7 +63,7 @@ def file_collection():
     # Retreive JSON data + Assign variables
     f = open('./config/config.json')
     data = json.load(f)
-    endpoint5 = data['endpoints']['5']
+    endpoint5 = data['endpoints']['copy']
     output_destination = endpoint5['output']
     collect = endpoint5['collect']
     files = endpoint5['files']
@@ -86,6 +86,7 @@ def file_collection():
     shutil.make_archive('collection', 'zip', f'{output_destination}')
     if collect == "Yes":
         if operating_system == "Windows":
+            print("hi")
             return send_file(f'collection.zip')
         else:
             return send_file(f'./collection.zip')
@@ -147,7 +148,7 @@ def file_retrieval():
     f = open('./config/config.json')
     data = json.load(f)
     endpoint7 = data['endpoints']['retrieval']
-    file_location = endpoint7['ssh_ip'] 
+    file_location = endpoint7['file_location'] 
     f.close()
 
     # Splitting the file input to check length + strip blank space
@@ -163,8 +164,9 @@ def file_retrieval():
             for file in file_location:
                 file2 = file.split('/')[-1]
                 os.system(f'cp {file} ./retrieval/{file2}')
-
-    return Response(status=201)
+    
+    data = {"filenumber":len(file_location), "file_location": endpoint7['file_location']}
+    return data
 
 #6. Retrieve file from endpoint 5
 @app.route("/file_retrieval_file", methods = ['GET'])
