@@ -1,5 +1,8 @@
 <html>
    <head>
+      <script>
+         const adminurl = "http://192.168.1.81:8080"
+      </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -104,7 +107,8 @@
       <script>
          function command_form(){
             event.preventDefault()
-            var baseurl = `http://${agent_ip}:5000`
+            const agent_ip = $('#agent_ip').val()
+            var baseUrl = `http://${agent_ip}:5000`
             const cmd = document.getElementById("cmd").value
             var command_output = document.getElementById("command_output").value
             const exec_only = document.getElementById("exec_only").value
@@ -128,7 +132,8 @@
 
          function file_copy_form(){
             event.preventDefault()
-            var baseurl = `http://${agent_ip}:5000`
+            const agent_ip = $('#agent_ip').val()
+            var baseUrl = `http://${agent_ip}:5000`
             const files = document.getElementById("files").value
             const output = document.getElementById("output").value
             const collect = document.getElementById("collect").value
@@ -159,7 +164,8 @@
 
          function ssh_form(){
             event.preventDefault()
-            var baseurl = `http://${agent_ip}:5000`
+            const agent_ip = $('#agent_ip').val()
+            var baseUrl = `http://${agent_ip}:5000`
             const ssh_ip = document.getElementById("ssh_ip").value
             const ssh_user = document.getElementById("ssh_user").value
             const ssh_pass= document.getElementById("ssh_pass").value
@@ -179,7 +185,8 @@
          
          function retrieval_form(){
             event.preventDefault()
-            var baseurl = `http://${agent_ip}:5000`
+            const agent_ip = $('#agent_ip').val()
+            var baseUrl = `http://${agent_ip}:5000`
             var file_location = document.getElementById("file_location").value
             var requestBody = {
                 file_location: file_location
