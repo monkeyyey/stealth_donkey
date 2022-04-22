@@ -1,7 +1,5 @@
 # stealth_donkey
-Stealth Donkey is a work-in-progress Proof-of-Concept (POC) project, a framework that can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
-
-The framework is customisable for various operating systems and/or types of information to be collected.
+Work-in-progress framework that can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
 
 With the framework in place, a system administrator can monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level.
 
