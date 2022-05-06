@@ -1,5 +1,5 @@
 # stealth_donkey
-Work-in-progress framework that can be applied to gather runtime system configuration and status for a targeted system at the stealth mode.
+Prototype for Stealth Agent Framework FYP project
 
 With the framework in place, a system administrator can monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level.
 
@@ -125,28 +125,7 @@ SSH runs on port `22`, so just check ah brother.
 As they exchange information with each other, they both require endpoints. Difference is that `Admin Server` has Web interface.
 
 ### 2. Operating System Compatibility
-At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine, and maybe to impress KK. Our final project will be mainly focused on Oracle Linux.
-
-### 3. Ur mum is gae
-Yup.
-
-
-<br /><br />
-## Things to learn before starting
-
-### 1. Using Flask (Python version of Express node.js)
-Our current Agent Server is created using Flask.
-
-### 2. Executing OS commands using code
-Most of the functionalities are made possible by using OS commands <br /> <br />
-Python:
-```
-os.system("<Command>")
-```
-Javascript:
-```
-exec("<Command>")
-```
+At the current stage, the OS compatibility of Agent is only so that you can easily use vscode to edit and run the Agent on local machine. Our final project will be mainly focused on Linux Agents.
 
 ### 3. Using the Agent to monitor system information to detect malware and intrusion detection
 Currently have zero knowledge on this. This component is the most important, as it serves the main purpose of this project.
@@ -165,15 +144,4 @@ Currently have zero knowledge on this. This component is the most important, as 
 `5` Receives request for file collection, copy files to 'retrieval' folder (if there are multiple files)
 `Admin Server` creates another request to own backend `controllers/exec.js`, which makes a curl request to `Agent` endpoint `6` and `7`, depending on whether there are one or more than one files to retrieve <br />
 `6` or `7` then sends the file/zip file back to `Admin Server`
-
-
-<br /><br />
-## To be Fixed/Tested/Solved
-
-### 1. How to automate answering of OS command replies (Applicable to Agent Endpoints)
-Right now, I can only execute OS commands, but I am unable to answer anything AFTER the command is executed. For Example, I am unable to execute commands like SSH logins, where I need to enter a password after I enter the SSH commands.<br />
-I have managed to use workarounds for these problems like `sshpass` and adding `--insecure` to curl commands. But some workarounds may require the Client machine to install certain services, which is not practical from the client perspective as our agent is supposed to be 'Stealthy'.
-
-### 2. Automatically run Agent functions at time intervals
-Now only can read from local, then admin activate by clicking button. Need to make it run automatically at time intervals
 
