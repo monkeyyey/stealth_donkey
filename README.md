@@ -1,8 +1,6 @@
 # stealth_donkey
 Prototype for Stealth Agent Framework FYP project
 
-With the framework in place, a system administrator can monitor and gather vital system information for malware and/or intrusion detection at the EndPoint level.
-
 References:
 1.	Unisys Stealth Solution Release v4.0: https://www.commoncriteriaportal.org/files/epfiles/st_vid10989-st.pdf
 2.	A Comprehensive Open Source Security Platform: https://wazuh.com/
