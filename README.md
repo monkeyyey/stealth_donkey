@@ -93,7 +93,7 @@ sudo systemctl start <service_name>.service
 <br /><br />
 
 ### 3. Setting up SSH server
-SSH server for storage of files that Admin wants to save, for endpoint 7. The SSH server will be set-up on a Kali Linux machine.
+SSH server for storage of files that Admin wants to save, for endpoint 4. The SSH server will be set-up on a Kali Linux machine.
 <br />
 <br />
 Install SSH server + Start ssh service:
