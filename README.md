@@ -108,7 +108,7 @@ Ensure SSH server is running, `netstat -tupln`:
  will not be shown, you would have to be root to see it all.)
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 0.0.0.0:8834            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:8834            0.0.0.0:*               LISTEN      -                  
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
 tcp6       0      0 :::8834                 :::*                    LISTEN      -                   
 tcp6       0      0 :::22                   :::*                    LISTEN      -      
