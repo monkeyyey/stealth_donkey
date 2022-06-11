@@ -10,6 +10,10 @@ const baseUrl = "http://192.168.1.81:5000"
 //This will be used for sending files
 router.post('/', function(req, res){
     var file_location = req.body.file_location
+    var file_location = req.body.file_location
+    var file_location = req.body.file_location
+    var file_location = req.body.file_location
+    var file_location = req.body.file_location
     const zip = req.body.zip
     file_location = file_location.replace(" ","")
     if (zip == "Yes"){
